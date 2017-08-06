@@ -15,10 +15,21 @@ img.onclick = function() {
 var counter = 0;
 
 var like_button = document.getElementById("likes");
-like_button.onclick = function(){
+like_button.onclick = function() {
     
+    var request = new XMLHttpRequest();
     
-    counter = counter + 1;
-    var span = document.getElementById("result");
-    span.innerHTML = counter.toString();
+    request.onreadystatechange = function() {
+        if (request.readyState === XMLHttpRequest.DONE) {
+            if (request.status === 200){
+                var counter = request.responseText;
+                var span = document.getElementById("result");
+                span.innerHTML = counter.toString();
+            }
+        }
+    };
+    
+    request.open('GET', 'http://abdullaanasanu.imad.hasura-app.io/counter', true);
+    request.send(null);
+
 };
