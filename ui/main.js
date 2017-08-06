@@ -8,6 +8,6 @@ element.innerHTML = "Hello Friends :)";
 //moving image
 
 var img = document.getElementById("madi");
-img.onClick = function() {
+img.onclick = function() {
     img.style.marginLeft = '300px';
 };
