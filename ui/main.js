@@ -9,5 +9,5 @@ element.innerHTML = "Hello Friends :)"
 
 var img = document.getElementById("img");
 img.onClick = function() {
-    img.style.margin-left = "100px";
+    img.style.margin-left = '100px';
 };
