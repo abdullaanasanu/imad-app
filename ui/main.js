@@ -4,3 +4,10 @@ console.log('Loaded!');
 
 var element = document.getElementById("main");
 element.innerHTML = "Hello Friends :)"
+
+//moving image
+
+var img = document.getElementById("img");
+img.onClick = function() {
+    img.style.margin-left = "100px";
+};
