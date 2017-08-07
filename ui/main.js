@@ -43,7 +43,7 @@ submit.onclick = function() {
     var namess = ['name 1', 'name 2', 'name 3'];
     var lists ='';
     for (var i = 0; i<namess.length;i++){
-        lists = '<li>' + namess[i] + '</li>';
+        lists += '<li>' + namess[i] + '</li>';
     }
     var ul = document.getElementById('namelists');
     ul.innerHTML = lists;
