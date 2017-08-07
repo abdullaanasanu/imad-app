@@ -56,7 +56,7 @@ submit.onclick = function() {
         }
     };
     
-    request.open('GET', 'abdullaanasanu.imad.hasura-app.io/submit-name' + names, true);
+    request.open('GET', 'abdullaanasanu.imad.hasura-app.io/submit-name?name' + names, true);
     request.send(null);
     
 
