@@ -58,8 +58,6 @@ submit.onclick = function() {
     
     var inputName = document.getElementById('name');
     var names = inputName.value;
-    var inputAge = document.getElementById('age');
-    var age = inputAge.value;
     request.open('GET', 'http://abdullaanasanu.imad.hasura-app.io/submit-name?name=' + names, true);
     request.send(null);
     
