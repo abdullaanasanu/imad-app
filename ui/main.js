@@ -45,11 +45,10 @@ submit.onclick = function() {
             if (request.status === 200){
                 var namess = request.responseText;
                 namess = JSON.parse(namess);
-                var ages = request.responseText;
-                ages = JSON.parse(ages);
+                
                 var lists ='';
                 for (var i = 0; i<namess.length;i++){
-                    lists += '<li>' + namess[i] + ' & Age is '+ages[i]+'</li>';
+                    lists += '<li>' + namess[i] + '</li>';
                 }
                 var ul = document.getElementById('namelists');
                 ul.innerHTML = lists;
@@ -61,7 +60,7 @@ submit.onclick = function() {
     var names = inputName.value;
     var inputAge = document.getElementById('age');
     var age = inputAge.value;
-    request.open('GET', 'http://abdullaanasanu.imad.hasura-app.io/submit-name?name=' + names + '&age=' + age, true);
+    request.open('GET', 'http://abdullaanasanu.imad.hasura-app.io/submit-name?name=' + names, true);
     request.send(null);
     
 
