@@ -39,13 +39,25 @@ var names = inputName.value;
 var submit = document.getElementById('submit_button');
 submit.onclick = function() {
     
+    var request = new XMLHttpRequest();
     
+    request.onreadystatechange = function() {
+        if (request.readyState === XMLHttpRequest.DONE) {
+            if (request.status === 200){
+                var namess = request.responseText;
+                names = JSON.parse(names);
+                var lists ='';
+                for (var i = 0; i<namess.length;i++){
+                    lists += '<li>' + namess[i] + '</li>';
+                }
+                var ul = document.getElementById('namelists');
+                ul.innerHTML = lists;
+            }
+        }
+    };
     
-    var namess = ['name 1', 'name 2', 'name 3'];
-    var lists ='';
-    for (var i = 0; i<namess.length;i++){
-        lists += '<li>' + namess[i] + '</li>';
-    }
-    var ul = document.getElementById('namelists');
-    ul.innerHTML = lists;
+    request.open('GET', 'abdullaanasanu.imad.hasura-app.io/submit-name' + names, true);
+    request.send(null);
+    
+
 };
