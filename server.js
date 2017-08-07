@@ -37,6 +37,7 @@ app.listen(port, function () {
 });
 
 var names = [];
+var ages = [];
 app.get('/submit-name', function (req, res) {
     var name = req.query.name;
     names.push(name);
