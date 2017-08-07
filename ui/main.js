@@ -29,7 +29,7 @@ like_button.onclick = function() {
         }
     };
     
-    request.open('GET', 'http://abdullaanasanu.imad.hasura-app.io/counter', true);
+    request.open('GET', 'abdullaanasanu.imad.hasura-app.io/counter', true);
     request.send(null);
 
 };
@@ -38,6 +38,7 @@ var inputName = document.getElementById('name');
 var names = inputName.value;
 var submit = document.getElementById('submit_button');
 submit.onclick = function() {
+    
     
     
     var namess = ['name 1', 'name 2', 'name 3'];
