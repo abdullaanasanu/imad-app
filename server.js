@@ -51,6 +51,42 @@ app.get('/submit-name', function (req, res) {
     res.send(JSON.stringify(names));
 });
 
+function createTemplate(data){
+    var title = data.title;
+    var date = data.date;
+    var heading = data.heading;
+    var content = data.content;
+    
+    var htmlTemplate = '
+    <html>
+        <head>
+            <title>
+                ${title}
+            </title>
+        </head>
+        <body>
+            <div class="container">
+                <div>
+                    <a href="/">Home</a>
+                </div>
+                <hr/>
+                <h3>
+                    ${heading}
+                </h3>
+                <div>
+                    ${date}
+                </div>
+                <div>
+                    ${content}
+                </div>
+            </div>
+        </body>
+    </html>
+    ';
+    
+    return htmlTemplate;
+}
+
 var pool = new Pool(Config);
 app.get('/test-db', function (req, res) {
     
