@@ -76,7 +76,7 @@ app.get('/test-db', function (req, res) {
 
 app.get('/article/:Name', function(req, res) {
     
-    pool.query("SELECT * FROM article WHERE title = '" + req.params.Name + "'", function(err, result) {
+    pool.query("SELECT * FROM article WHERE title = $1", [req.params.Name], function(err, result) {
         if (err){
             res.status(500).send(err.toString());
         }else{
