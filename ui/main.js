@@ -35,7 +35,7 @@ like_button.onclick = function() {
 };
 
 
-var submit = document.getElementById('submit_button');
+var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
     
     var request = new XMLHttpRequest();
@@ -43,23 +43,23 @@ submit.onclick = function() {
     request.onreadystatechange = function() {
         if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200){
-                var namess = request.responseText;
-                namess = JSON.parse(namess);
-                
-                var lists ='';
-                for (var i = 0; i<namess.length;i++){
-                    lists += '<li>' + namess[i] + '</li>';
-                }
-                var ul = document.getElementById('namelists');
-                ul.innerHTML = lists;
+                console.log("User Logged In");
+                alert('Logged in Successfully!');
+            }else if (request.status === 403) {
+                alert('Incorrect Username/password');
+            }else if (request.status === 500) {
+                alert('Something went wrong!');
             }
         }
     };
     
-    var inputName = document.getElementById('name');
-    var names = inputName.value;
-    request.open('GET', 'http://abdullaanasanu.imad.hasura-app.io/submit-name?name=' + names, true);
-    request.send(null);
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    console.log(username);
+    console.log(password);
+    request.open('POST', 'http://abdullaanasanu.imad.hasura-app.io/login', true);
+    request.setRequestHeader('Content-Type: application/json');
+    request.send(JSON.stringify({username : username, password : password}));
     
 
 };
