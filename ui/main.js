@@ -34,64 +34,82 @@ like_button.onclick = function() {
 
 };
 
-
-var submit = document.getElementById('submit-btn');
-submit.onclick = function() {
-    
-    var request = new XMLHttpRequest();
-    
-    request.onreadystatechange = function() {
-        if (request.readyState === XMLHttpRequest.DONE) {
-            if (request.status === 200){
-                console.log("User Logged In");
-                alert('Logged in Successfully!');
-            }else if (request.status === 403) {
-                alert('Incorrect Username/password');
-            }else if (request.status === 500) {
-                alert('Something went wrong!');
+function loadLogin() {
+    var submit = document.getElementById('submit-btn');
+    submit.onclick = function() {
+        
+        var request = new XMLHttpRequest();
+        var loginPart = '
+        <h3>Login Here</h3>
+            <div>
+                <input type="text" id="username" placeholder="Username ..."/>
+                <input type="password" id="password" placeholder="Password ..."/>
+                <input type="submit" id="submit-btn" value="LogIn"/>
+                <input type="submit" id="register" value="Register"/>
+            </div>
+        ';
+        document.getElementById('login_part').innerHTML = loginPart;
+        request.onreadystatechange = function() {
+            if (request.readyState === XMLHttpRequest.DONE) {
+                if (request.status === 200){
+                    console.log("User Logged In");
+                    alert('Logged in Successfully!');
+                }else if (request.status === 403) {
+                    alert('Incorrect Username/password');
+                }else if (request.status === 500) {
+                    alert('Something went wrong!');
+                }
             }
-        }
+        };
+        
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        console.log(username);
+        console.log(password);
+        request.open('POST', 'http://abdullaanasanu.imad.hasura-app.io/login', true);
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.send(JSON.stringify({username : username, password : password}));
+        
+    
     };
     
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
-    console.log(username);
-    console.log(password);
-    request.open('POST', 'http://abdullaanasanu.imad.hasura-app.io/login', true);
-    request.setRequestHeader('Content-Type', 'application/json');
-    request.send(JSON.stringify({username : username, password : password}));
-    
-
-};
-
-var submit = document.getElementById('register');
-submit.onclick = function() {
-    
-    var request = new XMLHttpRequest();
-    
-    request.onreadystatechange = function() {
+    var register = document.getElementById('register');
+    register.onclick = function() {
         
-        if (request.readyState === XMLHttpRequest.DONE) {
+        var request = new XMLHttpRequest();
+        
+        request.onreadystatechange = function() {
             
-            if (request.status === 200) {
-                console.log("Registered");
-                alert('Registered Successfully!');
-            }else if (request.status === 403) {
-                alert('Username Already in Use!');
-            }else if (request.status === 500) {
-                alert('Something went wrong!');
+            if (request.readyState === XMLHttpRequest.DONE) {
+                
+                if (request.status === 200) {
+                    console.log("Registered");
+                    alert('Registered Successfully!');
+                }else if (request.status === 403) {
+                    alert('Username Already in Use!');
+                }else if (request.status === 500) {
+                    alert('Something went wrong!');
+                }
+                
             }
             
-        }
+        };
+        
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        console.log(username);
+        console.log(password);
+        request.open('POST', 'http://abdullaanasanu.imad.hasura-app.io/create-user', true);
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.send(JSON.stringify({username : username, password : password}));
         
     };
+}
+
+loginLoad();
+
+function notLoggedIn() {
     
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
-    console.log(username);
-    console.log(password);
-    request.open('POST', 'http://abdullaanasanu.imad.hasura-app.io/create-user', true);
-    request.setRequestHeader('Content-Type', 'application/json');
-    request.send(JSON.stringify({username : username, password : password}));
     
-};
+    
+}
