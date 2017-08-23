@@ -39,15 +39,7 @@ function loadLogin() {
     submit.onclick = function() {
         
         var request = new XMLHttpRequest();
-        var loginPart = '
-        <h3>Login Here</h3>
-            <div>
-                <input type="text" id="username" placeholder="Username ..."/>
-                <input type="password" id="password" placeholder="Password ..."/>
-                <input type="submit" id="submit-btn" value="LogIn"/>
-                <input type="submit" id="register" value="Register"/>
-            </div>
-        ';
+        var loginPart = '<h3>Login Here</h3><div><input type="text" id="username" placeholder="Username ..."/><input type="password" id="password" placeholder="Password ..."/><input type="submit" id="submit-btn" value="LogIn"/><input type="submit" id="register" value="Register"/></div>';
         document.getElementById('login_part').innerHTML = loginPart;
         request.onreadystatechange = function() {
             if (request.readyState === XMLHttpRequest.DONE) {
