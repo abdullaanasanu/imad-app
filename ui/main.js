@@ -99,9 +99,3 @@ function loadLogin() {
 }
 
 loadLogin();
-
-function notLoggedIn() {
-    
-    
-    
-}
