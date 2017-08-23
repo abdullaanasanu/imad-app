@@ -98,7 +98,7 @@ function loadLogin() {
     };
 }
 
-loginLoad();
+loadLogin();
 
 function notLoggedIn() {
     
