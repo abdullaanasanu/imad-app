@@ -146,6 +146,9 @@ function loadArticle() {
         }
     };
     
+    request.open('GET','/get-articles', true);
+    request.send(null);
+    
 }
 
 loadLogin();
