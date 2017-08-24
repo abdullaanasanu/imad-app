@@ -152,3 +152,4 @@ function loadArticle() {
 }
 
 loadLogin();
+loadArticle();
