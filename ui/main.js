@@ -138,6 +138,10 @@ function loadArticle() {
                 for (var i =0; i<articleData.length; i++){
                     content += '<li><a href="/articles/'+articleData[i].title+'">'+articleData[i].heading+'</a>'+articleData[i].date.split('T')+'</li>';
                 }
+                content += '</ul>';
+                articles.innerHTML = content;
+            }else {
+                articles.innerHTML = 'Oops! There is no articles to show.';
             }
         }
     };
