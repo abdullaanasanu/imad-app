@@ -101,7 +101,7 @@ function notLoggedIn() {
 
 function loggedIn (username) {
     
-    var loggedinPart = '<h3> Hi <i>${username}</i></h3><a href="/logout">Logout</a>';
+    var loggedinPart = '<h3> Hi <i>'+username+'</i></h3><a href="/logout">Logout</a>';
     document.getElementById('login_part').innerHTML = loggedinPart;
     
 }
@@ -113,7 +113,7 @@ function loadLogin() {
         
         if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
-                loggedIn ("test"/*this.responseText*/);
+                loggedIn (this.responseText);
             }else {
                 notLoggedIn();
             }
