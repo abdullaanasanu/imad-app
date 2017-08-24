@@ -161,6 +161,18 @@ app.get('/test-db', function (req, res) {
     });
 });
 
+app.get('/get-articles', function(req, res) {
+    
+    pool.query('SELECT * FROM "article" ORDER BY date DESC', function(err, result) {
+        if (err) {
+            res.status(500).send(err.toString());
+        }else {
+            res.send(JSON.stringify(result.rows));
+        }
+    });
+    
+});
+
 app.get('/article/:Name', function(req, res) {
     
     pool.query('SELECT * FROM "article" WHERE title = $1', [req.params.Name], function(err, result) {
